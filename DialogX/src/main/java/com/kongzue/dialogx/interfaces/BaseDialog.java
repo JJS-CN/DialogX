@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -350,7 +351,9 @@ public abstract class BaseDialog {
     }
     
     public void tintColor(View view, int color) {
-        view.setBackgroundTintList(ColorStateList.valueOf(color));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            view.setBackgroundTintList(ColorStateList.valueOf(color));
+        }
     }
     
     protected void beforeShow() {
